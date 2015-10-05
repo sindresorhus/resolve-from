@@ -1,7 +1,7 @@
-'use strict';
-var test = require('ava');
-var resolveFrom = require('./');
+import test from 'ava';
+import fn from './';
 
-test('resolve module', function (t) {
-	t.assert(/fixture\/fixture\.js$/.test(resolveFrom('fixture', './fixture')));
+test(t => {
+	t.regexTest(/fixture\/fixture\.js$/, fn('fixture', './fixture'));
+	t.end();
 });
