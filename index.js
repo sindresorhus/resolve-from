@@ -11,9 +11,13 @@ module.exports = function (fromDir, moduleId) {
 
 	var fromFile = path.join(fromDir, 'noop.js');
 
-	return Module._resolveFilename(moduleId, {
-		id: fromFile,
-		filename: fromFile,
-		paths: Module._nodeModulePaths(fromDir)
-	});
+	try {
+		return Module._resolveFilename(moduleId, {
+			id: fromFile,
+			filename: fromFile,
+			paths: Module._nodeModulePaths(fromDir)
+		});
+	} catch (err) {
+		return null;
+	}
 };
