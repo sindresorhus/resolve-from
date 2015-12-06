@@ -4,7 +4,7 @@ var Module = require('module');
 
 module.exports = function (fromDir, moduleId) {
 	if (typeof fromDir !== 'string' || typeof moduleId !== 'string') {
-		throw new TypeError('Expected `fromDir` and `moduleId` to be a string');
+		throw new TypeError('Expected `fromDir` and `moduleId` to be strings');
 	}
 
 	fromDir = path.resolve(fromDir);

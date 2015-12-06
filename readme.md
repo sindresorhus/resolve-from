@@ -43,7 +43,7 @@ What you would use in `require()`.
 
 ## Tip
 
-Create a partial using a bound function if you want to require from the same `fromDir` multiple times:
+Create a partial using a bound function if you want to resolve from the same `fromDir` multiple times:
 
 ```js
 const resolveFromFoo = resolveFrom.bind(null, 'foo');
@@ -51,6 +51,14 @@ const resolveFromFoo = resolveFrom.bind(null, 'foo');
 resolveFromFoo('./bar');
 resolveFromFoo('./baz');
 ```
+
+
+## Related
+
+- [resolve-cwd](https://github.com/sindresorhus/resolve-cwd) - Resolve the path of a module from the current working directory
+- [req-from](https://github.com/sindresorhus/req-from) - Require a module from a given path
+- [req-cwd](https://github.com/sindresorhus/req-cwd) - Require a module from the current working directory
+- [lazy-req](https://github.com/sindresorhus/lazy-req) - Require modules lazily
 
 
 ## License
