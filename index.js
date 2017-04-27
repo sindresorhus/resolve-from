@@ -1,15 +1,15 @@
 'use strict';
-var path = require('path');
-var Module = require('module');
+const path = require('path');
+const Module = require('module');
 
-module.exports = function (fromDir, moduleId) {
+module.exports = (fromDir, moduleId) => {
 	if (typeof fromDir !== 'string' || typeof moduleId !== 'string') {
 		throw new TypeError('Expected `fromDir` and `moduleId` to be strings');
 	}
 
 	fromDir = path.resolve(fromDir);
 
-	var fromFile = path.join(fromDir, 'noop.js');
+	const fromFile = path.join(fromDir, 'noop.js');
 
 	try {
 		return Module._resolveFilename(moduleId, {
