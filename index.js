@@ -2,7 +2,7 @@
 const path = require('path');
 const Module = require('module');
 
-const _resolveFileName = (fromDir, fromFile, moduleId) => {
+const resolveFileName = (fromDir, fromFile, moduleId) => {
 	return Module._resolveFilename(moduleId, {
 		id: fromFile,
 		filename: fromFile,
@@ -10,7 +10,7 @@ const _resolveFileName = (fromDir, fromFile, moduleId) => {
 	});
 };
 
-const _resolveFrom = (fromDir, moduleId, silent) => {
+const resolveFrom = (fromDir, moduleId, silent) => {
 	if (typeof fromDir !== 'string' || typeof moduleId !== 'string') {
 		throw new TypeError('Expected `fromDir` and `moduleId` to be strings');
 	}
@@ -21,15 +21,15 @@ const _resolveFrom = (fromDir, moduleId, silent) => {
 
 	if (silent) {
 		try {
-			return _resolveFileName(fromDir, fromFile, moduleId);
+			return resolveFileName(fromDir, fromFile, moduleId);
 		} catch (err) {
 			return null;
 		}
 	}
 
-	return _resolveFileName(fromDir, fromFile, moduleId);
+	return resolveFileName(fromDir, fromFile, moduleId);
 };
 
-module.exports = _resolveFrom;
+module.exports = (fromDir, moduleId) => resolveFrom(fromDir, moduleId);
 
-module.exports.silent = (fromDir, moduleId) => _resolveFrom(fromDir, moduleId, true);
+module.exports.silent = (fromDir, moduleId) => resolveFrom(fromDir, moduleId, true);
