@@ -21,7 +21,7 @@ const _resolveFrom = (fromDir, moduleId, silent) => {
 
 	if (silent) {
 		try {
-			_resolveFileName(fromDir, fromFile, moduleId);
+			return _resolveFileName(fromDir, fromFile, moduleId);
 		} catch (err) {
 			return null;
 		}
