@@ -3,8 +3,12 @@ const path = require('path');
 const Module = require('module');
 
 module.exports = (fromDir, moduleId) => {
-	if (typeof fromDir !== 'string' || typeof moduleId !== 'string') {
-		throw new TypeError('Expected `fromDir` and `moduleId` to be strings');
+	if (typeof fromDir !== 'string') {
+		throw new TypeError(`Expected \`fromDir\` to be of type \`string\`, got \`${typeof fromDir}\``);
+	}
+
+	if (typeof moduleId !== 'string') {
+		throw new TypeError(`Expected \`moduleId\` to be of type \`string\`, got \`${typeof moduleId}\``);
 	}
 
 	fromDir = path.resolve(fromDir);
