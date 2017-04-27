@@ -1,23 +1,35 @@
 'use strict';
-var path = require('path');
-var Module = require('module');
+const path = require('path');
+const Module = require('module');
 
-module.exports = function (fromDir, moduleId) {
+const _resolveFileName = (fromDir, fromFile, moduleId) => {
+	return Module._resolveFilename(moduleId, {
+		id: fromFile,
+		filename: fromFile,
+		paths: Module._nodeModulePaths(fromDir)
+	});
+};
+
+const _resolveFrom = (fromDir, moduleId, silent) => {
 	if (typeof fromDir !== 'string' || typeof moduleId !== 'string') {
 		throw new TypeError('Expected `fromDir` and `moduleId` to be strings');
 	}
 
 	fromDir = path.resolve(fromDir);
 
-	var fromFile = path.join(fromDir, 'noop.js');
+	const fromFile = path.join(fromDir, 'noop.js');
 
-	try {
-		return Module._resolveFilename(moduleId, {
-			id: fromFile,
-			filename: fromFile,
-			paths: Module._nodeModulePaths(fromDir)
-		});
-	} catch (err) {
-		return null;
+	if (silent) {
+		try {
+			_resolveFileName(fromDir, fromFile, moduleId);
+		} catch (err) {
+			return null;
+		}
 	}
+
+	return _resolveFileName(fromDir, fromFile, moduleId);
 };
+
+module.exports = _resolveFrom;
+
+module.exports.silent = (fromDir, moduleId) => _resolveFrom(fromDir, moduleId, true);

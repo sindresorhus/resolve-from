@@ -2,15 +2,11 @@
 
 > Resolve the path of a module like [`require.resolve()`](http://nodejs.org/api/globals.html#globals_require_resolve) but from a given path
 
-Unlike `require.resolve()` it returns `null` instead of throwing when the module can't be found.
-
-
 ## Install
 
 ```
 $ npm install --save resolve-from
 ```
-
 
 ## Usage
 
@@ -23,10 +19,15 @@ resolveFrom('foo', './bar');
 //=> '/Users/sindresorhus/dev/test/foo/bar.js'
 ```
 
-
 ## API
 
 ### resolveFrom(fromDir, moduleId)
+
+Like `require()`, throws when the module can't be found.
+
+### resolveFrom.silent(fromDir, moduleId)
+
+Returns `null` instead of throwing when the module can't be found.
 
 #### fromDir
 
@@ -40,7 +41,6 @@ Type: `string`
 
 What you would use in `require()`.
 
-
 ## Tip
 
 Create a partial using a bound function if you want to resolve from the same `fromDir` multiple times:
@@ -51,7 +51,6 @@ const resolveFromFoo = resolveFrom.bind(null, 'foo');
 resolveFromFoo('./bar');
 resolveFromFoo('./baz');
 ```
-
 
 ## Related
 
