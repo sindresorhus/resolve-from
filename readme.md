@@ -2,8 +2,6 @@
 
 > Resolve the path of a module like [`require.resolve()`](http://nodejs.org/api/globals.html#globals_require_resolve) but from a given path
 
-Unlike `require.resolve()` it returns `null` instead of throwing when the module can't be found.
-
 
 ## Install
 
@@ -27,6 +25,12 @@ resolveFrom('foo', './bar');
 ## API
 
 ### resolveFrom(fromDir, moduleId)
+
+Like `require()`, throws when the module can't be found.
+
+### resolveFrom.silent(fromDir, moduleId)
+
+Returns `null` instead of throwing when the module can't be found.
 
 #### fromDir
 
