@@ -24,7 +24,9 @@
     "path",
     "module",
     "from",
-    "like"
+    "like",
+    "import",
+    "path"
   ],
   "devDependencies": {
     "ava": "*",

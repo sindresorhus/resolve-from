@@ -1,6 +1,6 @@
 # resolve-from [![Build Status](https://travis-ci.org/sindresorhus/resolve-from.svg?branch=master)](https://travis-ci.org/sindresorhus/resolve-from)
 
-> Resolve the path of a module like [`require.resolve()`](http://nodejs.org/api/globals.html#globals_require_resolve) but from a given path
+> Resolve the path of a module like [`require.resolve()`](https://nodejs.org/api/globals.html#globals_require_resolve) but from a given path
 
 
 ## Install
@@ -15,7 +15,7 @@ $ npm install --save resolve-from
 ```js
 const resolveFrom = require('resolve-from');
 
-// there's a file at `./foo/bar.js`
+// There is a file at `./foo/bar.js`
 
 resolveFrom('foo', './bar');
 //=> '/Users/sindresorhus/dev/test/foo/bar.js'
@@ -68,4 +68,4 @@ resolveFromFoo('./baz');
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

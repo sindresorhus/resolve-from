@@ -2,14 +2,6 @@
 const path = require('path');
 const Module = require('module');
 
-const resolveFileName = (fromDir, fromFile, moduleId) => {
-	return Module._resolveFilename(moduleId, {
-		id: fromFile,
-		filename: fromFile,
-		paths: Module._nodeModulePaths(fromDir)
-	});
-};
-
 const resolveFrom = (fromDir, moduleId, silent) => {
 	if (typeof fromDir !== 'string') {
 		throw new TypeError(`Expected \`fromDir\` to be of type \`string\`, got \`${typeof fromDir}\``);
@@ -20,20 +12,24 @@ const resolveFrom = (fromDir, moduleId, silent) => {
 	}
 
 	fromDir = path.resolve(fromDir);
-
 	const fromFile = path.join(fromDir, 'noop.js');
+
+	const resolveFileName = () => Module._resolveFilename(moduleId, {
+		id: fromFile,
+		filename: fromFile,
+		paths: Module._nodeModulePaths(fromDir)
+	});
 
 	if (silent) {
 		try {
-			return resolveFileName(fromDir, fromFile, moduleId);
+			return resolveFileName();
 		} catch (err) {
 			return null;
 		}
 	}
 
-	return resolveFileName(fromDir, fromFile, moduleId);
+	return resolveFileName();
 };
 
 module.exports = (fromDir, moduleId) => resolveFrom(fromDir, moduleId);
-
 module.exports.silent = (fromDir, moduleId) => resolveFrom(fromDir, moduleId, true);
