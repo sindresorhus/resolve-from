@@ -64,6 +64,7 @@ resolveFromFoo('./baz');
 - [import-cwd](https://github.com/sindresorhus/import-cwd) - Import a module from the current working directory
 - [resolve-pkg](https://github.com/sindresorhus/resolve-pkg) - Resolve the path of a package regardless of it having an entry point
 - [import-lazy](https://github.com/sindresorhus/import-lazy) - Import a module lazily
+- [resolve-global](https://github.com/sindresorhus/resolve-global) - Resolve the path of a globally installed module
 
 
 ## License
