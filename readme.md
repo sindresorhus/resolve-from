@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save resolve-from
+$ npm install resolve-from
 ```
 
 
