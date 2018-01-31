@@ -30,5 +30,6 @@
 	"devDependencies": {
 		"ava": "*",
 		"xo": "*"
-	}
+	},
+	"typings": "./index.d.ts"
 }
