@@ -11,7 +11,7 @@ test('resolveFrom()', t => {
 		resolveFrom('fixture', './nonexistent');
 	}, Error);
 	t.is(moduleNotFoundError.code, 'MODULE_NOT_FOUND');
-	t.is(moduleNotFoundError.message, 'Cannot find module \'./nonexistent\'');
+	t.is(moduleNotFoundError.message.split(/[\n\r]+/)[0], 'Cannot find module \'./nonexistent\'');
 
 	const resolveFromfixture = resolveFrom.bind(null, 'fixture');
 	t.regex(resolveFromfixture('./fixture'), /fixture\/fixture\.js$/);
