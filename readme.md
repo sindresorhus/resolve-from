@@ -57,6 +57,13 @@ resolveFromFoo('./baz');
 ```
 
 
+## resolve-from for enterprise
+
+Available as part of the Tidelift Subscription.
+
+The maintainers of resolve-from and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-resolve-from?utm_source=npm-resolve-from&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+
+
 ## Related
 
 - [resolve-cwd](https://github.com/sindresorhus/resolve-cwd) - Resolve the path of a module from the current working directory
@@ -65,16 +72,3 @@ resolveFromFoo('./baz');
 - [resolve-pkg](https://github.com/sindresorhus/resolve-pkg) - Resolve the path of a package regardless of it having an entry point
 - [import-lazy](https://github.com/sindresorhus/import-lazy) - Import a module lazily
 - [resolve-global](https://github.com/sindresorhus/resolve-global) - Resolve the path of a globally installed module
-
-
----
-
-<div align="center">
-	<b>
-		<a href="https://tidelift.com/subscription/pkg/npm-resolve-from?utm_source=npm-resolve-from&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
-	</b>
-	<br>
-	<sub>
-		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
-	</sub>
-</div>
