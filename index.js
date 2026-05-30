@@ -3,7 +3,7 @@ const path = require('path');
 const Module = require('module');
 const fs = require('fs');
 
-const resolveFrom = (fromDirectory, moduleId, silent) => {
+const resolveFrom = (fromDirectory, moduleId, silent, preserveSymlinks) => {
 	if (typeof fromDirectory !== 'string') {
 		throw new TypeError(`Expected \`fromDir\` to be of type \`string\`, got \`${typeof fromDirectory}\``);
 	}
@@ -12,15 +12,17 @@ const resolveFrom = (fromDirectory, moduleId, silent) => {
 		throw new TypeError(`Expected \`moduleId\` to be of type \`string\`, got \`${typeof moduleId}\``);
 	}
 
-	try {
-		fromDirectory = fs.realpathSync(fromDirectory);
-	} catch (error) {
-		if (error.code === 'ENOENT') {
-			fromDirectory = path.resolve(fromDirectory);
-		} else if (silent) {
-			return;
-		} else {
-			throw error;
+	if (!preserveSymlinks) {
+		try {
+			fromDirectory = fs.realpathSync(fromDirectory);
+		} catch (error) {
+			if (error.code === 'ENOENT') {
+				fromDirectory = path.resolve(fromDirectory);
+			} else if (silent) {
+				return;
+			} else {
+				throw error;
+			}
 		}
 	}
 
@@ -45,3 +47,4 @@ const resolveFrom = (fromDirectory, moduleId, silent) => {
 
 module.exports = (fromDirectory, moduleId) => resolveFrom(fromDirectory, moduleId);
 module.exports.silent = (fromDirectory, moduleId) => resolveFrom(fromDirectory, moduleId, true);
+module.exports.preserveSymlinks = (fromDirectory, moduleId) => resolveFrom(fromDirectory, moduleId, false, true);
